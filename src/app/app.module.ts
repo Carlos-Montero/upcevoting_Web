@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 import {Routes, RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -9,12 +10,12 @@ import {PollComponent} from './poll/poll.component';
 
 
 
-
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'main', component: MainComponent},
   {path: 'poll', component: PollComponent},
 ]
+
 
 @NgModule({
   declarations: [
@@ -23,9 +24,9 @@ const appRoutes: Routes = [
     MainComponent,
     PollComponent
   ],
-  
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
