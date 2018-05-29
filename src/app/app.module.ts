@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import {LoginComponent} from './login/login.component';
 import {MainComponent} from './main/main.component';
 import {PollComponent} from './poll/poll.component';
+import { ProfessorComponent } from './professor/professor.component';
 
 
 
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'main', component: MainComponent},
   {path: 'poll', component: PollComponent},
+  {path: 'professor', component: ProfessorComponent},
 ]
 
 
@@ -22,7 +24,8 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     MainComponent,
-    PollComponent
+    PollComponent,
+    ProfessorComponent
   ],
   imports: [
     BrowserModule,
