@@ -1,8 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import {Routes, RouterModule} from '@angular/router';
-
 import { AppComponent } from './app.component';
 import {LoginComponent} from './login/login.component';
 import {MainComponent} from './main/main.component';
@@ -10,6 +8,10 @@ import {PollComponent} from './poll/poll.component';
 import { ProfessorComponent } from './professor/professor.component';
 import { UserService } from './service/user.service';
 
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { RoutingRoutingModule } from './routing/routing-routing.module';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -17,7 +19,6 @@ const appRoutes: Routes = [
   {path: 'poll', component: PollComponent},
   {path: 'professor', component: ProfessorComponent},
 ]
-
 
 @NgModule({
   declarations: [
@@ -28,9 +29,12 @@ const appRoutes: Routes = [
     ProfessorComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    RoutingRoutingModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
