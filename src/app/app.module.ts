@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { PollComponent } from './poll/poll.component';
-import { ProfessorComponent } from './professor/professor.component';
+import { ProfessorComponent } from './components/professor/professor.component';
 import { ProfessorMainComponent } from './components/professorMain/professorMain.component';
 import { UserService } from './service/user.service';
 import { AuthGuard } from './guard/auth.guard';
