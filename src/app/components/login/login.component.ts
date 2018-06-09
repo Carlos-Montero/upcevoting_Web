@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../service/auth.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent {
   title = 'login';
 
-  constructor(private userService: UserService, private router: Router, private toastr: ToastrService) {
+  constructor(private userService: UserService, private authService: AuthService, private router: Router, private toastr: ToastrService) {
   }
 
   showSuccessToast(m: string) {
@@ -25,24 +26,34 @@ export class LoginComponent {
     this.toastr.error(m);
   }
 
-  signIn(username: string, password: string) {
-    this.userService.signIn$(username, password).subscribe(
-      data => {
-        this.showSuccessToast('User ' + username + ' Logged In');
+  showInfoToast(m: string) {
+    this.toastr.info(m);
+  }
 
-        // this.userService.setUserLoggedIn();
-        localStorage.setItem('username', data.username);
-        localStorage.setItem('userId', data.userId);
-        localStorage.setItem('token', data.token);
-        this.router.navigate(['home']);
-      },
-      data => {
-        console.log();
-        this.showErrorToast('Invalid credentials');
-      });
+  signIn(username: string, password: string) {
+    const bool = this.authService.isTokenExpired();
+    if (bool) {
+      this.userService.signIn$(username, password).subscribe(
+        data => {
+          this.showSuccessToast('User ' + username + ' has logged in');
+  
+          // this.userService.setUserLoggedIn();
+          localStorage.setItem('username', data.username);
+          localStorage.setItem('userId', data.userId);
+          localStorage.setItem('token', data.token);
+          this.router.navigate(['home']);
+        },
+        data => {
+          console.log();
+          this.showErrorToast('Invalid credentials');
+        });
+    }
+    else {
+      this.showInfoToast('User ' + username + ' is already logged in');
+      this.router.navigate(['home']);
+    }
   }
   
-
 }
 
 
