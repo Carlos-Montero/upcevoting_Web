@@ -9,9 +9,9 @@ const url = 'http://localhost:3000/users';
 
 @Injectable()
 export class UserService {
-
   public token: any;
   public user;
+  
   constructor(private http: HttpClient) { }
 
   signIn$(username: string, password: string): Observable<any> {

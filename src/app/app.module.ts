@@ -7,11 +7,15 @@ import {MainComponent} from './main/main.component';
 import {PollComponent} from './poll/poll.component';
 import { ProfessorComponent } from './professor/professor.component';
 import { UserService } from './service/user.service';
-
+import { AuthGuard } from './auth.guard';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { RoutingRoutingModule } from './routing/routing-routing.module';
+import { AuthService } from './service/auth.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptorHelper } from './interceptor/http-interceptor';
+
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -36,7 +40,12 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     RoutingRoutingModule
   ],
-  providers: [UserService],
+  providers: [UserService, AuthService, AuthGuard, 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorHelper,
+      multi: true,
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
