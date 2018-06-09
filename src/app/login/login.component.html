@@ -16,18 +16,16 @@
 
 
   <div class="container">
-    <!--<div [hidden]="submitted">-->
       <div class="col-md-offset-4 col-md-4">
-        <!--<form #loginForm="ngForm" (ngSubmit)="onSubmit()" >-->
           <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email"   class="form-control"  name="email" id="email" required >
+            <label for="username">Email</label>
+            <input #username type="text"   class="form-control"  name="username" id="username" required >
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" id="password" required>
+            <input #password type="password" class="form-control" name="password" id="password" required>
           </div>
-          <button type="submit" class="btn btn-success" [disabled]="loginForm.form.invalid">LogIn</button>
+          <button type="submit" class="btn btn-success" (click)="signIn(username.value, password.value)">LogIn</button>
         <!--</form>-->
         <br>
       </div>

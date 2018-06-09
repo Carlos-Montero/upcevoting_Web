@@ -19,7 +19,9 @@ export class UserService {
   }
 
   getSubjects$(username: string) {
-    return this.http.get<Subject[]>(url + '/getSubjects', username);
+    return this.http.get<Subject[]>(url + '/getSubjects/' + username);
   }
+
+  
 
 }
