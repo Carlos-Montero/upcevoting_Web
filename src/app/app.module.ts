@@ -16,6 +16,7 @@ import { RoutingRoutingModule } from './routing/routing-routing.module';
 import { AuthService } from './service/auth.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorHelper } from './interceptor/http-interceptor';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpInterceptorHelper } from './interceptor/http-interceptor';
     MainComponent,
     PollComponent,
     ProfessorComponent,
-    ProfessorMainComponent
+    ProfessorMainComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,
