@@ -17,15 +17,6 @@ import { AuthService } from './service/auth.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorHelper } from './interceptor/http-interceptor';
 
-
-const appRoutes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'main', component: MainComponent},
-  {path: 'poll', component: PollComponent},
-  {path: 'professor', component: ProfessorComponent},
-  {path: 'professorMain', component: ProfessorMainComponent},
-]
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +31,6 @@ const appRoutes: Routes = [
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
     RoutingRoutingModule
   ],
   providers: [UserService, AuthService, AuthGuard, 
