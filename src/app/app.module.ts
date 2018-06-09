@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
-import { PollComponent } from './poll/poll.component';
+import { PollComponent } from './components/poll/poll.component';
 import { ProfessorComponent } from './components/professor/professor.component';
 import { ProfessorMainComponent } from './components/professorMain/professorMain.component';
 import { UserService } from './service/user.service';
