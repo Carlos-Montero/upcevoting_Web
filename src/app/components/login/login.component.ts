@@ -31,8 +31,8 @@ export class LoginComponent {
   }
 
   signIn(username: string, password: string) {
-    const bool = this.authService.isTokenExpired();
-    if (bool) {
+    const isTokenExpired = this.authService.isTokenExpired();
+    if (isTokenExpired) {
       const user = this.userService.signIn$(username, password).subscribe(
         data => {
           const decoded = this.authService.decodeToken(data.token); 

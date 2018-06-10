@@ -15,18 +15,22 @@ export class MainComponent implements OnInit {
   constructor(private authService: AuthService, private userService: UserService){}
   
   ngOnInit()  {
-      /*
-      //decode token
+    const isTokenExpired = this.authService.isTokenExpired();
+      if (isTokenExpired) {
+        //decode token
       const id = this.authService.decodeToken(localStorage.getItem('token')).sub; 
       //get user profile
       this.userService.getUser$(id).subscribe(
         data => {
           this.user = data;
+          console.log(this.user);
         },
         data => {
           console.log(data);
-        });*/
-    } 
+        });
+    }
+  }
+      
 }
 
   

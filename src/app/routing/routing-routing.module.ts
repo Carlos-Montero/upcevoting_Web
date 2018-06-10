@@ -8,12 +8,12 @@ import { ProfessorComponent } from '../components/professor/professor.component'
 import { ProfessorMainComponent } from '../components/professorMain/professorMain.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/signin', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'signin',           component: LoginComponent },
   { path: 'home',             component: MainComponent, canActivate: [AuthGuard] },
-  { path: 'poll',             component: PollComponent },
-  { path: 'professor',        component: ProfessorComponent },
-  { path: 'professorMain',    component: ProfessorMainComponent }
+  { path: 'poll',             component: PollComponent, canActivate: [AuthGuard] },
+  { path: 'professor',        component: ProfessorComponent, canActivate: [AuthGuard] },
+  { path: 'professorMain',    component: ProfessorMainComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
