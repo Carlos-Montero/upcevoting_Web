@@ -35,4 +35,10 @@ export class AuthService {
     return !(date.valueOf() > new Date().valueOf());
   }
 
+  decodeToken(token?: string): any {
+    return jwt_decode(token);
+  }
+
+
+
 }

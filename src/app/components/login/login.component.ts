@@ -33,13 +33,11 @@ export class LoginComponent {
   signIn(username: string, password: string) {
     const bool = this.authService.isTokenExpired();
     if (bool) {
-      this.userService.signIn$(username, password).subscribe(
+      const user = this.userService.signIn$(username, password).subscribe(
         data => {
-          this.showSuccessToast('User ' + username + ' has logged in');
-  
+          const decoded = this.authService.decodeToken(data.token); 
+          this.showSuccessToast('User ' + decoded.user + ' has logged in');
           // this.userService.setUserLoggedIn();
-          localStorage.setItem('username', data.username);
-          localStorage.setItem('userId', data.userId);
           localStorage.setItem('token', data.token);
           this.router.navigate(['home']);
         },

@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
 
   onLogOut() {
     if (!this.authService.isTokenExpired()) {
-      const username = localStorage.getItem('username');
+      const username = this.authService.decodeToken(localStorage.getItem('token')).user;
       localStorage.clear();
       this.router.navigate(['/signin']);
       this.showInfoToast('User ' + username + ' has logged out');

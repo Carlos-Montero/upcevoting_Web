@@ -11,7 +11,7 @@ export class HttpInterceptorHelper {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       
-      if(req.url.match('users/signin') || req.url.match('users/signup')) {
+      if(req.url.match('http://localhost:3000/users/signin') || req.url.match('http://localhost:3000/users/signup')) {
         return next.handle(req);
       }
       const authorization = this.authService.getToken();

@@ -13,7 +13,11 @@ export class UserService {
   public user;
   
   constructor(private http: HttpClient) { }
-
+  
+  getUser$(id: number): Observable<User> {
+    return this.http.get<User>(url + '/' + id);
+  }
+  
   signIn$(username: string, password: string): Observable<any> {
     return this.http.post<any>(url + '/signin', { username, password });
   }
