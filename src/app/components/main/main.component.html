@@ -13,45 +13,7 @@
 <div class="container">
   <h2>Your subjects</h2>
   <p>You can vote in these subjects:</p>
-  <table class="table table-hover">
-    <thead>
-    <tr>
-      <th>Subject</th>
-      <th>Professor</th>
-      <th>Vote</th>
-    </tr>
-
-    </thead>
-    <tbody>
-    <tr>
-      <td>CITIE2</td>
-      <td>Juan</td>
-      <td>
-        <span class="input-group-btn">
-          <button type="submit" name="button" class="btn btn-primary" id="bt" >Vote <i class="fa fa-angle-right"></i></button>
-          </span>
-      </td>
-    </tr>
-    <tr>
-      <td>TIQ</td>
-      <td>Santi</td>
-      <td>
-        <span class="input-group-btn">
-          <button type="submit" name="button" class="btn btn-primary" id="bt">Vote <i class="fa fa-angle-right"></i></button>
-          </span>
-      </td>
-    </tr>
-    <tr>
-      <td>ERF</td>
-      <td>Chema</td>
-      <td>
-        <span class="input-group-btn">
-          <button type="submit" name="button" class="btn btn-primary" id="bt">Vote <i class="fa fa-angle-right"></i></button>
-          </span>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <app-subject-list [data]='user'></app-subject-list>
 </div>
 
 </body>

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest, HttpEvent, HttpEventType } from '@angular/common/http';
-import { User } from '../model/user.model';
+import { User } from '../models/user.model';
 import {Observable} from "rxjs";
-import {Subject} from "../model/subject.model";
+import {SubjectVote} from "../models/subject-vote.model";
 
 
 const url = 'http://localhost:3000/users';

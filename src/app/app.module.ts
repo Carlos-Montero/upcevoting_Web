@@ -17,6 +17,8 @@ import { AuthService } from './service/auth.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorHelper } from './interceptor/http-interceptor';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { SubjectListComponent } from './components/subject-list/subject-list.component';
+import { SubjectComponent } from './components/subject/subject.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     PollComponent,
     ProfessorComponent,
     ProfessorMainComponent,
-    NavbarComponent
+    NavbarComponent,
+    SubjectListComponent,
+    SubjectComponent
   ],
   imports: [
     CommonModule,
