@@ -1,4 +1,4 @@
-/*import * as bigInt from 'big-integer/BigInteger';
+import * as bigInt from 'big-integer/BigInteger';
 //const crypto = require('crypto');
 
 //const hash = (type, rand,  )
@@ -9,11 +9,11 @@ const generateRandomKeys = (bitLength = 2048) => {
         p = getPrime(bitLength / 2);
         q = getPrime(bitLength / 2);
         n = p.multiply(q);
-    } while (q.cmp(p) == 0 || n.bitLength() != bitLength);
+    } while (q.compare(p) == 0 || n.bitLength() != bitLength);
 
-    phi = p.substract(1).multiply(q.sub(1));
+    phi = p.minus(1).multiply(q.sub(1));
     e = bigInt(65537); //Fermat prime number
-    d = e.invertm(phi);
+    d = e.modInv(phi);
 
     const publicKey = new RSAPublicKey(e, n);
     const privateKey = new RSAPrivateKey(d,n);
@@ -40,55 +40,57 @@ const RSAPublicKey = class RSAPublicKey {
 
     encrypt(m) {
         // E[m] = m^e mod n
-        return m.powm(this.e, this.n);   
+        return m.modPow(this.e, this.n);
     };
 
     blind(m) {
         // Alice compute an aleatory k, the blinding factor
         this.k = bigInt.rand(this.n);
         // Alice blinds the message, m'= m*(k^e mod n)
-        return m.mul(this.k.powm(this.e,this.n));
+        return m.multiply(this.k.modPow(this.e,this.n));
     };
 
     unblind(m) {
         // Alice computes de k inverse
-        const kInv = this.k.invertm(this.n);
+        const kInv = this.k.modInv(this.n);
         // Alice computes sigma, s =  m'^k^-1 mod n
-        return m.mul(kInv).mod(this.n);
+        return m.multiply(kInv).mod(this.n);
     };
 
     verify(s) {
         // alice unblinds it with sigma
-        return s.powm(this.e, this.n); // Verify
+        return s.modPow(this.e, this.n); // Verify
     };
 
-    unsign(m) { 
+    unsign(m) {
         // m is the signed message
         // US[m] = m^d mod n
-        return m.powm(this.e, this.n)
+        return m.modPow(this.e, this.n)
     };
 }
 
 const RSAPrivateKey = class RSAPrivateKey {
+  public d: bigInt.BigInteger;
+  public n: bigInt.BigInteger;
     constructor(d,n) {
         this.d = bigInt(d);
         this.n = bigInt(n);
     };
 
-    decrypt(m) { 
+    decrypt(m) {
         // m is the encrypted message
         // D[m] = m^d mod n
-        return m.powm(this.d, this.n);
+        return m.modPow(this.d, this.n);
     };
 
-    sign(m) { 
+    sign(m) {
         // Blinded m in case of blind signature
-        // Alice computes sigma', s' =  m'^d mod n 
-        return m.powm(this.d,this.n);
+        // Alice computes sigma', s' =  m'^d mod n
+        return m.modPow(this.d,this.n);
     };
 
     getRand() {
-        return this.n.rand(); 
+        return this.n.randBetween(1,1000000);
     }
 }
 
@@ -96,4 +98,4 @@ module.exports = {
     generateRandomKeys: generateRandomKeys,
     PrivateKey: RSAPrivateKey,
     PublicKey: RSAPublicKey
-};*/
+};
