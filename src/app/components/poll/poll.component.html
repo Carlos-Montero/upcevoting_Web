@@ -8,147 +8,58 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
-
-
-
+  
   <body>
     <div class="container">
-    <h2>TIQ</h2>
-    <p>Vote the next points:</p>
+    <h2>{{subject}}</h2>
+    <p>Vote the next points (using the arrows):</p>
     <br>
-    <table class="table table-hover">
+    
+    <table class="table">
       <thead>
         <tr>
           <th>Issue</th>
-          <td><td><td><td><td>
+          
           <th>Mark</th>
         </tr>
       </thead>
 
-
       <tbody>
         <tr>
           <td>Concepts explained</td>
-        <td><td><td><td><td><td>
-          <div class="form-group">
-            <select class="form-control" id="concepts">
-              <option>0</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-            </select>
-          </div>
-        <tr>
-    </table>
-
-      <table class="table table-hover">
-        <tbody>
+          <td>
+            <input #concepts type="number" min="0" max="10"   class="form-control" required >
+          </td>  
+        </tr>
         <tr>
           <td>Difficulty</td>
-          <td><td><td><td><td><td><td><td><td><td><td><td>
-            <div class="form-group">
-              <select class="form-control" id="difficulty">
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-              </select>
-            </div>
+          <td>
+            <input #difficulty type="number" min="0" max="10"   class="form-control" required >
+          </td>
+        </tr>
         <tr>
-      </table>
-
-      <table class="table table-hover">
-        <tbody>
-        <tr>
-          <td>Materials available</td>
-          <td><td><td><td><td><td><td><td>
-            <div class="form-group">
-              <select class="form-control" id="materials">
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-              </select>
-            </div>
-        <tr>
-      </table>
-
-      <table class="table table-hover">
-        <tbody>
+            <td>Materials available</td>
+            <td>
+              <input #materials type="number" min="0" max="10"   class="form-control" required >
+            </td>
+        </tr>
         <tr>
           <td>Relation between time and workload</td>
           <td>
-            <div class="form-group">
-              <select class="form-control" id="relation">
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-              </select>
-            </div>
-        <tr>
-      </table>
-
-      <table class="table table-hover">
-        <tbody>
+            <input #relation type="number" min="0" max="10"   class="form-control" required >
+          </td>
+        </tr>
         <tr>
           <td>Teacher mark</td>
-          <td><td><td><td><td><td><td><td><td><td>
-            <div class="form-group">
-              <select class="form-control" id="teacher">
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-              </select>
-            </div>
-        <tr>
-      </table>
-
-
-
-  <button type="button" class="btn btn-primary btn-lg">Send results</button>
+          <td>
+              <input #teacher type="number" min="0" max="10"   class="form-control" required >
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
-
-
-
-
-
+    <div align="center">
+      <button type="submit"  class="btn btn-success" (click)="vote(concepts.value, difficulty.value, materials.value, relation.value, teacher.value)">Vote</button>
+    </div>
 </body>
 </html>

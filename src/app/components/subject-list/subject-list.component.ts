@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { SubjectVote } from '../../models/subject-vote.model';
 import { User } from '../../models/user.model';
+import { Router } from '@angular/router';
+import { SubjectListService } from '../../service/subject-list.service';
 
 @Component({
   selector: 'app-subject-list', 
@@ -8,10 +10,10 @@ import { User } from '../../models/user.model';
   styleUrls: ['./subject-list.component.css']
 })
 export class SubjectListComponent implements OnInit {
-  @Input() data: User;
-  private user: User;
+  @Input() data: string[];
+  private subjects: string[];
   
-  constructor () { }
+  constructor (private router: Router, private subjectListService: SubjectListService) { }
 
   ngOnInit() {
     
@@ -20,9 +22,15 @@ export class SubjectListComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     // only run when property "data" changed
     if (changes['data']) {
-        this.user = this.data;
-        console.log(this.user);
+        this.subjects = this.data;
     }
-}
+  }
+
+  goToPoll(subject) {
+    this.subjectListService.passSubjectName(subject);
+    this.router.navigate(['poll']);
+  }
+
+
 
 }

@@ -11,7 +11,7 @@ import { User } from '../../models/user.model';
 
 export class MainComponent implements OnInit {
   private user: User;
-
+  private subjects: string[];
   constructor(private authService: AuthService, private userService: UserService){}
   
   ngOnInit()  {
@@ -22,7 +22,8 @@ export class MainComponent implements OnInit {
     this.userService.getUser$(id).subscribe(
       data => {
         this.user = data;
-        console.log('got the user!');
+        this.subjects = data.subjects;
+        console.log('got the user! ');
       },
       data => {
         console.log(data);

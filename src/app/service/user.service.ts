@@ -26,4 +26,15 @@ export class UserService {
     //return this.http.get<Subject[]>(url + '/getSubjects', username);
   }
 
+  vote$(name, professor, concepts, difficulty, materials, relation): Observable<any> {
+    console.log(name);
+    console.log(professor);
+    console.log(concepts);
+    console.log(difficulty);
+    console.log(materials);
+    console.log(relation);
+    
+    return this.http.post<any>(url + '/vote', { name, professor, concepts, difficulty, relation, materials });
+  } 
+
 }

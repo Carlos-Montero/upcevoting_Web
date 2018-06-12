@@ -1,9 +1,13 @@
 export class SubjectVote {
   name: string;
-  professor: string;
+  professor: number;
   concepts: number;
   difficulty: number;
   relation: number;
   materials: number;
-  teacher: string;
+  
+
+  constructor(name: string, professor: number, concepts: number, difficulty: number, relation: number, materials: number) {
+
+  }
 }

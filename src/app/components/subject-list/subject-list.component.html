@@ -1,17 +1,15 @@
-<table class="table table-hover">
+<table class="table">
   <thead>
     <tr>
       <th scope="col">Subject</th>
-      <th scope="col">Professor</th>
       <th scope="col">Vote</th>
     </tr>
   </thead>
   
   <tbody>
-    <tr *ngFor='let s of user.subjects'>
+    <tr *ngFor='let s of subjects'>
       <td>{{s}}</td>
-      <td>{{s}}</td>
-      <td>{{s}}</td>
+      <td><button type="button" class="btn btn-light" (click)="goToPoll(s)">Vote</button></td>
     </tr>  
   </tbody>
   

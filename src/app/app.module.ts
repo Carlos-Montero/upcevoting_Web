@@ -19,6 +19,8 @@ import { HttpInterceptorHelper } from './interceptor/http-interceptor';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SubjectListComponent } from './components/subject-list/subject-list.component';
 import { SubjectComponent } from './components/subject/subject.component';
+import { SubjectListService } from './service/subject-list.service';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import { SubjectComponent } from './components/subject/subject.component';
     HttpClientModule,
     RoutingRoutingModule
   ],
-  providers: [UserService, AuthService, AuthGuard, 
+  providers: [UserService, AuthService, AuthGuard, SubjectListService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorHelper,
