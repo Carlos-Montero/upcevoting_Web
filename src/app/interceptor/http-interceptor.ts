@@ -12,7 +12,7 @@ export class HttpInterceptorHelper implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
-    if(req.url.match('users/signin') || req.url.match('users/signup') || req.url.match('users/oauth/google/code') || req.url.match('users/oauth/google/token')) {
+    if(req.url.match('users/signin') || req.url.match('users/signup') || req.url.match('users/vote')) {
       return next.handle(req);
     }
     const authorization = this.authService.getToken();

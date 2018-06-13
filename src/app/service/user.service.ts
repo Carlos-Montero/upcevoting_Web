@@ -3,6 +3,10 @@ import { HttpClient, HttpHeaders, HttpRequest, HttpEvent, HttpEventType } from '
 import { User } from '../models/user.model';
 import {Observable} from "rxjs";
 import {SubjectVote} from "../models/subject-vote.model";
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/catch';
+import { map } from 'rxjs/operators/map';
+
 
 
 const url = 'http://localhost:3000/users';
@@ -26,15 +30,23 @@ export class UserService {
     //return this.http.get<Subject[]>(url + '/getSubjects', username);
   }
 
-  vote$(name, professor, concepts, difficulty, materials, relation): Observable<any> {
-    console.log(name);
-    console.log(professor);
-    console.log(concepts);
-    console.log(difficulty);
-    console.log(materials);
-    console.log(relation);
-    
-    return this.http.post<any>(url + '/vote', { name, professor, concepts, difficulty, relation, materials });
+  vote$(name: string, concepts: string, difficulty: string, materials: string, relation: string, professor: string): Observable<any> {
+    const tmp = { 
+      "name" : name,
+      "professor" : Number(professor),
+      "concepts" : Number(concepts),
+      "difficulty" : Number(difficulty),
+      "relation" : Number(relation),
+      "materials" : Number(materials)
+    };
+
+    return this.http.post<any>(url + '/vote', tmp);
   } 
+
+  sendBKpub$(BKpub: string): Observable<any> {
+    return this.http.post<any>(url + '/sendBKpub', { BKpub });
+  }
+    
+  
 
 }

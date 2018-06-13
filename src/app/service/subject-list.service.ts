@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class SubjectListService {
 
+  
   public bSubject = new BehaviorSubject('POLL');
   constructor() { }
 
